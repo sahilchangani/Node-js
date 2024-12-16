@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        /* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Navigation Bar */
+.nav {
+    background-color: #007BFF;
+    padding: 18px;
+    text-align: center;
+}
+
+.nav .s2 a {
+    color: white;
+    text-decoration: none;
+    margin: 0 25px;
+    transition: 0.1s;
+}
+.nav .s2 a:hover{
+    text-decoration: underline white;
+    
+}
+
+form {
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 400px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form input, form button {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+#a1{
+    background-color: #007BFF;
+    height: 29px;
+    width: 35%;
+    border: 0px;
+}
+#a1 a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+#a2{
+    background-color: red;
+    height: 29px;
+    width: 35%;
+    border: 0px;
+}
+#a2 a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+
+table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+table img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+/* Buttons in Table */
+
+
+    </style>
+
+
+<body>
+    <div class="nav">
+        <div class="s2">
+           <center> <a href="">Novel</a>
+            <a href="">Science Fiction</a>
+            <a href="">Short Stories</a>
+            <a href="">Biography</a>
+            <a href="">Relegious</a> </center>
+        </div>
+    </div> <br><br>
+
+    <form action="/addData" method="post">
+        <input type="text" name="book" placeholder="Enter Book Name" >
+        <input type="text" name="author" placeholder="Enter Author" >
+        <input type="text" name="price" placeholder="Enter Price" >
+        <input type="date" name="date" placeholder="Enter Release Date" >
+        <button type="submit">Add Book</button>
+    </form> <br>
+    <table style="width: 50%;" border="1">
+        <thead><tr>
+    <td>name</td>
+    <td>author</td>
+    <td>Price</td>
+    <td>Realese Date</td>
+    <td>actions</td>
+</tr></thead>
+
+<tbody>
+    
+        <% Books.map((e) => { %>
+            <tr>
+                <td><%= e.book %></td>
+                <td> <%= e.author %></td>
+                <td><%= e.price %></td>
+                <td> <%= e.date %></td>
+                <td>
+                    <button id="a1" ><a href="/editData?id=<%=e.id%>">Edit</a></button>
+                    <button id="a2" ><a href="/deleteData?id=<%=e.id%>">Delete</a></button> </td>
+                </tr>
+        <% }) %>
+    
+    </tbody>
+    </table>
+</body>
+</html>
